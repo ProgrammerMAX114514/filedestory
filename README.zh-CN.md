@@ -1,4 +1,4 @@
-# FileDestory 文件损坏工具
+# FileDestroy 文件损坏工具
 
 **一个用于测试、模拟、安全研究目的的命令行工具，用于对文件内容进行选择性损坏。该工具会保护文件头和尾部（1024字节）的内容，并允许自定义损坏间隔和字节数。**
 
@@ -10,7 +10,7 @@
 
 ## 📌 介绍
 
-**FileDestory** 是一个基于 Python 的命令行工具，用于**对文件内容进行选择性损坏**，主要用于：
+**FileDestroy** 是一个基于 Python 的命令行工具，用于**对文件内容进行选择性损坏**，主要用于：
 
 - 测试、模拟、安全研究
 - 数据销毁模拟
@@ -32,7 +32,7 @@
 - 🛡️ **默认安全**：保护文件头和尾部（1024字节）的内容免受任何修改。
 - 💾 **可选备份**：在损坏前自动创建备份文件`.bak`（可禁用）。
 - 📊 **进度条**：带有实时反馈的进度条，显示速度（KB/s、MB/s等）。该功能需要[`rich`](https://github.com/Textualize/rich)库（可选但推荐）
-- 🖥️ **双模式支持**：交互式CLI（用户提示）和命令行参数（对自动化或在其他脚本中调用友好，例如`python filedestory.py -f file.bin -s 1KB -d 4`）
+- 🖥️ **双模式支持**：交互式CLI（用户提示）和命令行参数（对自动化或在其他脚本中调用友好，例如`python filedestroy.py -f file.bin -s 1KB -d 4`）
 
 ---
 
@@ -50,8 +50,8 @@ pip install rich tqdm
 ### 2. 克隆或下载项目
 
 ```bash
-git clone https://github.com/ProgrammerMAX114514/filedestory.git
-cd filedestory
+git clone https://github.com/ProgrammerMAX114514/filedestroy.git
+cd filedestroy
 ```
 
 ### 3. 运行工具
@@ -61,7 +61,7 @@ cd filedestory
 运行脚本并跟随屏幕提示：
 
 ```bash
-python filedestory.py
+python filedestroy.py
 ```
 
 你将被要求提供：
@@ -75,7 +75,7 @@ python filedestory.py
 #### 2. 命令行参数（脚本化 / 自动化）
 
 ```bash
-python filedestory.py -f "path/to/your/file.bin" -s 1KB -d 4
+python filedestroy.py -f "path/to/your/file.bin" -s 1KB -d 4
 ```
 
 ##### 支持的参数
@@ -84,7 +84,7 @@ python filedestory.py -f "path/to/your/file.bin" -s 1KB -d 4
 |-------------|-------------------------------------------|------------------|
 | `-f`、`--file`   | **必填。** 目标文件路径。           | `-f test.bin`    |
 | `-s`、`--step`   | 损坏间隔（KB为单位）（默认：1KB） | `-s 2KB` 或 `-s 1` |
-| `-d`、`--destory`| 每次损坏的字节数                       | `-d 5`           |
+| `-d`、`--destroy`| 每次损坏的字节数                       | `-d 5`           |
 | `--no-backup`    | 禁用自动备份（默认：启用）           | `--no-backup`    |
 
 > ℹ️ `step`参数接受整数（例如`1` = 1KB）或带有单位的字符串（例如`1KB`）。

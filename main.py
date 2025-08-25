@@ -244,16 +244,16 @@ def interactive_mode():
         step_bytes = step_kb * 1024
         console and console.print(f"✅ 使用 step: {step_kb}KB ({step_bytes} 字节)")
 
-        # 询问 destory
-        destory_input = input("💥 请输入每次破坏的字节数 (留空默认4B): ").strip()
+        # 询问 destroy
+        destroy_input = input("💥 请输入每次破坏的字节数 (留空默认4B): ").strip()
         destroy_bytes = 4
-        if destory_input:
+        if destroy_input:
             try:
-                destroy_bytes = int(destory_input)
+                destroy_bytes = int(destroy_input)
                 if destroy_bytes <= 0:
                     raise ValueError
             except ValueError:
-                raise ValueError("destory 必须为正整数")
+                raise ValueError("destroy 必须为正整数")
         console and console.print(f"✅ 每次破坏: {destroy_bytes} 字节")
 
         # 询问备份
@@ -292,7 +292,7 @@ def cli_main():
     parser = argparse.ArgumentParser(description="文件破坏工具（保留首尾1024B）")
     parser.add_argument('-f', '--file', required=True, help='目标文件路径')
     parser.add_argument('-s', '--step', type=str, default='1KB', help='每隔多少KB破坏一次（如 1KB，默认1KB）')
-    parser.add_argument('-d', '--destory', type=int, default=4, help='每次破坏多少字节（默认4）')
+    parser.add_argument('-d', '--destroy', type=int, default=4, help='每次破坏多少字节（默认4）')
     parser.add_argument('--no-backup', action='store_true', help='禁用备份（默认生成 .bak 备份）')
 
     args = parser.parse_args()
@@ -317,9 +317,9 @@ def cli_main():
             print(f"[错误] step 参数无效: {args.step}，应为如 1KB 或 正整数。错误: {e}", file=sys.stderr)
             sys.exit(1)
 
-    destroy_bytes = args.destory
+    destroy_bytes = args.destroy
     if destroy_bytes <= 0:
-        print("[错误] destory 必须 > 0", file=sys.stderr)
+        print("[错误] destroy 必须 > 0", file=sys.stderr)
         sys.exit(1)
 
     make_backup = not args.no_backup
@@ -351,7 +351,7 @@ def cli_main():
 
 if __name__ == '__main__':
     try:
-        if len(sys.argv) > 1 and sys.argv[1] in ['-f', '--file', '-s', '--step', '-d', '--destory', '--no-backup']:
+        if len(sys.argv) > 1 and sys.argv[1] in ['-f', '--file', '-s', '--step', '-d', '--destroy', '--no-backup']:
             # 命令行参数模式
             cli_main()
         else:
