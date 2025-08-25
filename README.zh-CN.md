@@ -38,7 +38,7 @@
 
 ## 🛠️ 安装和使用
 
-## 1. 先决条件
+### 1. 先决条件
 
 - Python **3.8或更高版本**
 - (可选) [`rich`](https://pypi.org/project/rich/) 库用于彩色进度条：
@@ -47,14 +47,14 @@
 pip install rich tqdm
 ```
 
-## 2. 克隆或下载项目
+### 2. 克隆或下载项目
 
 ```bash
 git clone https://github.com/ProgrammerMAX114514/filedestory.git
 cd filedestory
 ```
 
-## 3. 运行工具
+### 3. 运行工具
 
 #### 1. 交互模式（推荐新手使用）
 
@@ -73,6 +73,7 @@ python filedestory.py
 - 最终确认
 
 #### 2. 命令行参数（脚本化 / 自动化）
+
 ```bash
 python filedestory.py -f "path/to/your/file.bin" -s 1KB -d 4
 ```
